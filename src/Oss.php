@@ -9,15 +9,15 @@
  * '-------------------------------------------------------------------*/
 namespace houdunwang\oss;
 
-use houdunwang\config\Config;
-use houdunwang\page\build\Base;
+use houdunwang\oss\build\Base;
 
-class Page {
+class Oss {
 	protected $link = null;
 
-	//更改缓存驱动
+	//驱动
 	public function driver() {
 		$this->link = new Base();
+
 		return $this;
 	}
 
