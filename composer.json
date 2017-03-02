@@ -1,0 +1,31 @@
+{
+  "name": "houdunwang/oss",
+  "description": "简单、安全的操作阿里云OSS的功能",
+  "type": "project",
+  "keywords": [
+    "houdunwang",
+    "hdphp",
+    "后盾网",
+    "后盾人",
+    "oss",
+    "后盾网向军"
+  ],
+  "homepage": "http://www.houdunwang.com/",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "后盾网向军",
+      "email": "2300071698@qq.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "autoload": {
+    "files": [],
+    "psr-4": {
+      "houdunwang\\oss\\": "src"
+    }
+  }
+}
