@@ -21,7 +21,8 @@
   "minimum-stability": "stable",
   "require": {
     "php": ">=5.4.0",
-    "aliyuncs/oss-sdk-php": "~2.0"
+    "aliyuncs/oss-sdk-php": "~2.0",
+    "houdunwang/config": "~1.0"
   },
   "autoload": {
     "files": [],
