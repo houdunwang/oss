@@ -10,7 +10,6 @@
 namespace houdunwang\oss\build;
 
 //错误处理
-use houdunwang\config\Config;
 use OSS\OssClient;
 
 class Base {
@@ -21,8 +20,8 @@ class Base {
 
 	public function __construct() {
 		if ( function_exists( 'c' ) ) {
-			$this->ossClient = new OssClient( Config::get( 'oss.accessKeyId' ), Config::get( 'oss.accessKeySecret' ), Config::get( 'oss.endpoint' ) );
-			$this->bucket    = Config::get( 'oss.bucket' );
+			$this->ossClient = new OssClient( c( 'oss.accessKeyId' ), c( 'oss.accessKeySecret' ), c( 'oss.endpoint' ) );
+			$this->bucket    = c( 'oss.bucket' );
 		}
 	}
 
