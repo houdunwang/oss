@@ -1,7 +1,6 @@
 {
   "name": "houdunwang/oss",
   "description": "简单、安全的操作阿里云OSS的功能",
-  "type": "project",
   "keywords": [
     "houdunwang",
     "hdphp",
@@ -24,10 +23,18 @@
     "aliyuncs/oss-sdk-php": "~2.0",
     "houdunwang/config": "~1.0"
   },
+  "require-dev": {
+    "phpunit/phpunit": "^6.1"
+  },
   "autoload": {
     "files": [],
     "psr-4": {
       "houdunwang\\oss\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "tests\\": "tests"
     }
   }
 }
