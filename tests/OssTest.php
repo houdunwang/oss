@@ -51,4 +51,13 @@ class OssTest extends TestCase
         $res      = Oss::uploadFile($object, $filePath);
         $this->assertArrayHasKey('path', $res);
     }
+
+    /**
+     * 签名
+     */
+    public function test_sign()
+    {
+        $res = json_decode(Oss::sign(), true);
+        $this->assertArrayHasKey('accessid', $res);
+    }
 }
