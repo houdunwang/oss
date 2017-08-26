@@ -22,7 +22,7 @@ use PHPUnit\Framework\TestCase;
 class OssTest extends TestCase
 {
     /**
-     *
+     * 构造函数
      */
     public function setUp()
     {
@@ -38,7 +38,6 @@ class OssTest extends TestCase
         $object  = 'test2.txt';
         $content = 'houdunwang.com';
         $res     = Oss::putObject($object, $content);
-        print_r($res);
         $this->assertArrayHasKey('oss-request-url', $res);
     }
 
