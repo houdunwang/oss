@@ -19,8 +19,8 @@ Config::set('oss',[
                       |--------------------------------------------------------------------------
                       | https://ram.console.aliyun.com/
                       */
-                      'accessKeyId'     => 'VUFGPITAyRwwi296',
-                      'accessKeySecret' => 'DQDn3RSYzZ8OgZrUUfcRrnPYJgZ43r',
+                      'accessKeyId'     => '',
+                      'accessKeySecret' => '',
                   
                       /*
                       |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ Config::set('oss',[
                       |--------------------------------------------------------------------------
                       | 外网域名比如会在前端上传获取上传签名时使用
                       */
-                      'host'        => 'http://hdxj.oss-cn-hangzhou.aliyuncs.com',
+                      'host'        => 'http://hdphp.oss-cn-hangzhou.aliyuncs.com',
                   
                       /*
                       |--------------------------------------------------------------------------
