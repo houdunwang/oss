@@ -27,7 +27,7 @@ class OssTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        Config::loadFiles('tests/config');
+        Config::set('oss','tests/config');
     }
 
     /**
