@@ -40,10 +40,8 @@ class Base
     public function __construct()
     {
         $this->ossClient = new OssClient(
-            Config::get('oss.accessKeyId'),
-            Config::get('oss.accessKeySecret'),
-            Config::get('oss.endpoint'),
-            Config::get('oss.custom_domain')
+            Config::get('aliyun.accessId'), Config::get('aliyun.accessKey'),
+            Config::get('oss.endpoint'), Config::get('oss.custom_domain')
         );
         $this->bucket    = Config::get('oss.bucket');
     }

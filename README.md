@@ -17,15 +17,16 @@ composer require houdunwang/oss
 |   accessKey |  同上 accessId  |
 
 ```
+Config::set('aliyun',[
+    'accessId'=>'',
+    'accessKey'=>''
+]);
 Config::set('oss',[
-	'accessKeyId'=>'',
-	'accessKeySecret'=>'',
 	//外网Endpoint OSS开通Region和Endpoint对照表: https://help.aliyun.com/document_detail/31837.html
 	'endpoint'=>'oss-cn-hangzhou.aliyuncs.com',
 	//OSS块标识
 	'bucket'=> "houdunren"
-	]
-);
+]);
 ```
 
 ##字符串上传
