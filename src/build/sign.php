@@ -25,16 +25,16 @@ trait sign
     /**
      * @return string
      */
-    public function sign()
+    public function sign($dir = '')
     {
         //阿里云 AccessKeyId
-        $id = Config::get('oss.accessKeyId');
+        $id = Config::get('aliyun.accessId');
         //阿里云  AccessKeySecret
-        $key = Config::get('oss.accessKeySecret');
+        $key = Config::get('aliyun.accessKey');
         //OSS外网域名: 在阿里云后台OSS bucket中查看
         $host = Config::get('oss.host');
         //oss中本次上传存放文件的目录
-        $dir        = isset($_GET['dir']) ? $_GET['dir'] : '';
+        $dir        = $dir ? $dir : (isset($_GET['dir']) ? $_GET['dir'] : '');
         $now        = time();
         $expire     = 30; //设置该policy超时时间是10s. 即这个policy过了这个有效时间，将不能访问
         $end        = $now + $expire;

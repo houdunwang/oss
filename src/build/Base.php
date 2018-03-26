@@ -41,7 +41,7 @@ class Base
     {
         $this->ossClient = new OssClient(
             Config::get('aliyun.accessId'), Config::get('aliyun.accessKey'),
-            Config::get('oss.endpoint'), Config::get('oss.custom_domain')
+            Config::get('oss.endpoint')
         );
         $this->bucket    = Config::get('oss.bucket');
     }
