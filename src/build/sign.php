@@ -21,16 +21,16 @@ use houdunwang\config\Config;
  */
 trait sign
 {
-    //生成供前台使用的签名
     /**
+     * 生成供前台使用的签名
      * @return string
      */
     public function sign($dir = '')
     {
         //阿里云 AccessKeyId
-        $id = Config::get('aliyun.accessId');
+        $id = Config::get('oss.accessId');
         //阿里云  AccessKeySecret
-        $key = Config::get('aliyun.accessKey');
+        $key = Config::get('oss.accessKey');
         //OSS外网域名: 在阿里云后台OSS bucket中查看
         $host = Config::get('oss.host');
         //oss中本次上传存放文件的目录
