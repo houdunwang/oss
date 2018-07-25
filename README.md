@@ -46,7 +46,7 @@ $content = "Hi, OSS.";
 
 ## 签名
 
-签名用于前台上传时使用.
+签名用于使用[前台上传组件](https://github.com/houdunwang/hdjs)上传时使用。
 
 ```
 \houdunwang\oss\Oss::sign();
