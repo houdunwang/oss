@@ -11,8 +11,6 @@
 
 namespace houdunwang\oss\build;
 
-use houdunwang\config\Config;
-
 /**
  * 为客户端上传生成签名
  * Trait sign
@@ -23,16 +21,19 @@ trait sign
 {
     /**
      * 生成供前台使用的签名
+     *
+     * @param string $dir
+     *
      * @return string
      */
     public function sign($dir = '')
     {
         //阿里云 AccessKeyId
-        $id = Config::get('oss.accessId');
+        $id = $this->config['accessId'];
         //阿里云  AccessKeySecret
-        $key = Config::get('oss.accessKey');
+        $key = $this->config['accessKey'];
         //OSS外网域名: 在阿里云后台OSS bucket中查看
-        $host = Config::get('oss.host');
+        $host = $this->config['host'];
         //oss中本次上传存放文件的目录
         $dir        = $dir ? $dir : (isset($_GET['dir']) ? $_GET['dir'] : '');
         $now        = time();
@@ -48,11 +49,15 @@ trait sign
         $start        = [0 => 'starts-with', 1 => '$key', 2 => $dir];
         $conditions[] = $start;
 
-        $arr            = ['expiration' => $expiration, 'conditions' => $conditions];
+        $arr            = [
+            'expiration' => $expiration,
+            'conditions' => $conditions,
+        ];
         $policy         = json_encode($arr);
         $base64_policy  = base64_encode($policy);
         $string_to_sign = $base64_policy;
-        $signature      = base64_encode(hash_hmac('sha1', $string_to_sign, $key, true));
+        $signature      = base64_encode(hash_hmac('sha1', $string_to_sign, $key,
+            true));
 
         $response              = [];
         $response['accessid']  = $id;

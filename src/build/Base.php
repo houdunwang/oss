@@ -9,7 +9,6 @@
  * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
  * '-------------------------------------------------------------------*/
 
-use houdunwang\config\Config;
 use OSS\OssClient;
 
 /**
@@ -32,6 +31,7 @@ class Base
      * @var
      */
     protected $bucket;
+    protected $config = [];
 
     /**
      * 构造函数
@@ -39,11 +39,21 @@ class Base
      */
     public function __construct()
     {
+
+    }
+
+    public function config(array $config)
+    {
+        $this->config = $config;
+    }
+
+    protected function setOssClient()
+    {
         $this->ossClient = new OssClient(
-            Config::get('oss.accessId'), Config::get('oss.accessKey'),
-            Config::get('oss.endpoint')
+            $this->config['accessId'], $this->config['accessKey'],
+            $this->config['endpoint']
         );
-        $this->bucket    = Config::get('oss.bucket');
+        $this->bucket    = $this->config['bucket'];
     }
 
     /**
@@ -56,10 +66,13 @@ class Base
      */
     public function __call($name, $arguments)
     {
+        $this->setOssClient();
         array_unshift($arguments, $this->bucket);
         $fileInfo      = pathinfo($arguments['1']);
-        $arguments[1]  = time().substr(md5($arguments[1]), 0, 5).mt_rand(0, 999).'.'.$fileInfo['extension'];
-        $arr           = call_user_func_array([$this->ossClient, $name], $arguments);
+        $arguments[1]  = time().substr(md5($arguments[1]), 0, 5).mt_rand(0, 999)
+            .'.'.$fileInfo['extension'];
+        $arr           = call_user_func_array([$this->ossClient, $name],
+            $arguments);
         $arr['uptime'] = time();
 
         //文件上传时添加其他数据
@@ -73,7 +86,8 @@ class Base
             $arr['size']      = $arr['info']['size_upload'];
             $arr['ext']       = $info['extension'];
             $arr['dir']       = '';
-            $arr['image']     = in_array(strtolower($info['extension']), ['jpg', 'jpeg', 'png', 'gif']);
+            $arr['image']     = in_array(strtolower($info['extension']),
+                ['jpg', 'jpeg', 'png', 'gif']);
         }
 
         return $arr;

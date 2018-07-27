@@ -19,7 +19,7 @@ composer require houdunwang/config
 | host | 外网域名比如会在前端上传获取上传签名时使用![image-20180726055213901](assets/image-20180726055213901.png) |
 
 ```
-\houdunwang\config\Config::set('oss',[
+\houdunwang\oss\Oss::config([
     'accessId'      => '',
     'accessKey'     => '',
     'bucket'        => 'hdxj',
@@ -46,7 +46,7 @@ $content = "Hi, OSS.";
 
 ## 签名
 
-签名用于使用[前台上传组件](https://github.com/houdunwang/hdjs)上传时使用。
+签名用于使用[前台上传组件](https://github.com/houdunwang/hdjs)上传时使用，使用前需要将上面的配置设置正确。
 
 ```
 \houdunwang\oss\Oss::sign();
